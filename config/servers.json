@@ -1,0 +1,13 @@
+{
+  "Servers": {
+      "1": {
+          "Name": "demon_dice_db",
+          "Group": "Servers",
+          "Host": "demon_dice_db",
+          "Port": 5432,
+          "MaintenanceDB": "postgres",
+          "Username": "postgres",
+          "SSLMode": "prefer"
+      }
+  }
+}

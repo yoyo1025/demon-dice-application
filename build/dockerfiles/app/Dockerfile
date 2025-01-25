@@ -1,4 +1,4 @@
-FROM golang:1.19.1-alpine
+FROM golang:1.22.7-alpine
 
 # 必要なパッケージをインストール
 RUN apk update && apk add --no-cache git

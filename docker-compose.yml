@@ -15,19 +15,21 @@ services:
       - DB_PORT=${DB_PORT}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-
+      - DB_NAME=${DB_NAME}
   demon_dice_db:
     container_name: ${DB_HOST}
-    build:
-      context: .
-      dockerfile: ./build/dockerfiles/db/Dockerfile
+    image: postgres:16.2
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U "${DB_USER:-postgres}" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - db-store:/var/lib/postgresql/data
-      - ./database/init:/docker-entrypoint-initdb.d
     ports:
       - "${DB_PORT}:5432"
     
@@ -49,5 +51,5 @@ services:
       - demon_dice_db
 
 volumes:
-  db-store:
+  db_data:
   pgadmin-data:

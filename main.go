@@ -2,7 +2,7 @@ package main
 
 import (
 	"demon-dice-application/database"
-	"demon-dice-application/entity"
+	"demon-dice-application/domain/model"
 	"fmt"
 	"net/http"
 
@@ -27,14 +27,14 @@ func main() {
 
 	app.GET("/users", func(c echo.Context) error {
 		db := database.GetDB()
-		var users []entity.User
+		var users []model.User
 		db.Find(&users)
 		return c.JSON(http.StatusOK, users)
 	})
 
 	app.POST("/users", func(c echo.Context) error {
 		db := database.GetDB()
-		user := new(entity.User)
+		user := new(model.User)
 		if err := c.Bind(user); err != nil {
 			return c.JSON(http.StatusBadRequest, err.Error())
 		}

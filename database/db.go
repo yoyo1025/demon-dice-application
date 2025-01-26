@@ -1,7 +1,7 @@
 package database
 
 import (
-	"demon-dice-application/entity"
+	"demon-dice-application/domain/model"
 	"fmt"
 	"log"
 	"os"
@@ -38,7 +38,7 @@ func initDB() {
 
 	fmt.Println("Successfully connected to the database!")
 
-	db.AutoMigrate(&entity.User{})
+	db.AutoMigrate(&model.User{})
 }
 
 func GetDB() *gorm.DB {

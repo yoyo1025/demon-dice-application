@@ -7,15 +7,15 @@ type Demon struct {
 func NewDemon(id, userId int64, name string, isConnected bool) *Demon {
 	return &Demon{
 		Player: Player{
-			ID: id,
-			UserID: userId,
-			Name: name,
-			IsConnected: isConnected,
-			IsOnBreak: false,
+			id: id,
+			userId: userId,
+			name: name,
+			isConnected: isConnected,
+			isOnBreak: false,
 		},
 	}
 }
 
-func Capture(v *Villager) {
-	v.IsAlive = false
+func (d *Demon) Capture(v *Villager) {
+	v.Captured()
 }

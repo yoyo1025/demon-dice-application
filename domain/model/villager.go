@@ -7,7 +7,7 @@ type Villager struct {
 	rank int64
 }
 
-func NewVillager(id, userId int64, name string, isConnected bool) (*Villager){
+func NewVillager(id, userId int64, name string, isConnected, isOnBreak bool) (*Villager){
 	return &Villager{
 		Player: Player{
 			id: id,
@@ -20,6 +20,18 @@ func NewVillager(id, userId int64, name string, isConnected bool) (*Villager){
 		isAlive: true,
 		rank: 0,
 	}
+}
+
+func (v *Villager) GetIsAlive() bool {
+	return v.isAlive
+}
+
+func (v *Villager) GetRank() int64 {
+	return v.rank
+}
+
+func (v *Villager) GetPoints() int64 {
+	return v.points
 }
 
 func (v *Villager) AddPoint() {

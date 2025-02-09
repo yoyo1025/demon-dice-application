@@ -4,7 +4,7 @@ type Demon struct {
 	Player
 }
 
-func NewDemon(id, userId int64, name string, isConnected bool) *Demon {
+func NewDemon(id, userId int64, name string, isConnected, isOnBreak bool) *Demon {
 	return &Demon{
 		Player: Player{
 			id: id,

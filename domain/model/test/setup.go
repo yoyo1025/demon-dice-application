@@ -9,3 +9,7 @@ func setupDemon() *model.Demon {
 func setupVillager() *model.Villager {
 	return model.NewVillager(3, 1003, "TestVillager", true, false)
 }
+
+func setupDice() *model.Dice {
+	return model.NewDice()
+}

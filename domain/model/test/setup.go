@@ -13,3 +13,7 @@ func setupVillager() *model.Villager {
 func setupDice() *model.Dice {
 	return model.NewDice()
 }
+
+func setupTurn(maxTurn int64) *model.Turn  {
+	return model.NewTurn(maxTurn)
+}

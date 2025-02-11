@@ -17,3 +17,7 @@ func setupDice() *model.Dice {
 func setupTurn(maxTurn int64) *model.Turn  {
 	return model.NewTurn(maxTurn)
 }
+
+func setupPosition(x, y int64) *model.Position {
+	return model.NewPosition(x, y)
+}

@@ -8,13 +8,13 @@ type Player struct {
 	isOnBreak   bool
 }
 
-func NewPlayer(id, userId int64, name string, isConnected bool) *Player {
+func NewPlayer(id, userId int64, name string, isConnected, isOnBreak bool) *Player {
 	return &Player{
 		id:          id,
 		userId:      userId,
 		name:        name,
 		isConnected: isConnected,
-		isOnBreak:   false,
+		isOnBreak:   isOnBreak,
 	}
 }
 
@@ -36,4 +36,12 @@ func (p *Player) GetIsConnected() bool {
 
 func (p *Player) GetIsOnBreak() bool {
 	return p.isOnBreak;
+}
+
+func (p *Player) SetIsConnected(isConnected bool) {
+	p.isConnected = isConnected
+}
+
+func (p *Player) SetIsOnBreak(isOnBreak bool) {
+	p.isOnBreak = isOnBreak
 }

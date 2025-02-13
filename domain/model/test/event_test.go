@@ -41,4 +41,36 @@ func TestExcuteEvent(t *testing.T)  {
 		// }
 		fmt.Println(got)
 	})
+
+	t.Run("SKIP_TURN で対象プレイヤーの isOnBreak が true になる", func(t *testing.T) {
+		eventKind := 1
+		event := setupEvent(model.EventKindEnum(eventKind))
+		player1 := setupPlayer(1, 1001, "test-player1", true, false)
+		player2 := setupPlayer(2, 1002, "test-player2", true, false)
+		player3 := setupPlayer(3, 1003, "test-player3", true, false)
+		player4 := setupPlayer(4, 1004, "test-player4", true, false)
+
+		
+
+		players := []*model.Player {
+			player1, player2, player3, player4,
+		}
+
+		p1Pos := setupPosition(3, 3)
+		p2Pos := setupPosition(1, 2)
+		p3Pos := setupPosition(3, 4)
+		p4Pos := setupPosition(5, 7)
+
+		playerPositions := map[*model.Player]*model.Position {
+			players[0]: p1Pos,
+			players[1]: p2Pos,
+			players[2]: p3Pos,
+			players[3]: p4Pos,
+		}
+
+		event.ExecuteEvent(playerPositions, players, 1, 2)
+		if !players[1].GetIsOnBreak() {
+			t.Errorf("SKIP_TURN イベント後、プレイヤー2の isOnBreak は true のはずが false のまま")
+	}
+	})
 }
